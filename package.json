@@ -1,0 +1,19 @@
+{
+  "name": "meow-bot",
+  "version": "1.0.0",
+  "description": "A Discord bot that says Miau and sends cat gifs",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/node": "^22.13.0"
+  }
+}
