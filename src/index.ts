@@ -1,21 +1,7 @@
 import { Client, GatewayIntentBits, SlashCommandBuilder, REST, Routes } from "discord.js";
 import "dotenv/config";
-
-interface CatApiImage {
-  id: string;
-  url: string;
-  width: number;
-  height: number;
-}
-
-const CAT_API_URL = "https://api.thecatapi.com/v1/images/search?mime_types=gif";
-
-async function fetchRandomCatGif(): Promise<string> {
-  const res = await fetch(CAT_API_URL);
-  if (!res.ok) throw new Error(`Cat API returned ${res.status}`);
-  const [image] = (await res.json()) as CatApiImage[];
-  return image.url;
-}
+import { fetchRandomCatGif } from "./catGif.js";
+import { startHealthCheck } from "./healthCheck.js";
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -55,6 +41,8 @@ client.on("interactionCreate", async (interaction) => {
     await interaction.editReply({ content: "🐱 **Miau!** _(but the cat gif ran away...)_" });
   }
 });
+
+startHealthCheck();
 
 (async () => {
   await registerCommands();
