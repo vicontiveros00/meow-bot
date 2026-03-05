@@ -35,10 +35,10 @@ client.on("interactionCreate", async (interaction) => {
   await interaction.deferReply();
   try {
     const gif = await fetchRandomCatGif();
-    await interaction.editReply({ content: `🐱 **Miau!**\n${gif}` });
+    await interaction.editReply({ content: `**miau!**\n${gif}` });
   } catch (err) {
     console.error("Failed to fetch cat gif:", err);
-    await interaction.editReply({ content: "🐱 **Miau!** _(but the cat gif ran away...)_" });
+    await interaction.editReply({ content: "**miau!** _(call vic, something got fucked in the bot...)_" });
   }
 });
 
